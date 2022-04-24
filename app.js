@@ -7,6 +7,7 @@ const layouts = require("express-ejs-layouts");
 // Importing controllers
 const errorController = require("./controllers/errorController");
 const homeController = require("./controllers/homeController");
+const userController = require("./controllers/userController");
 // importing mongoose for DB
 const mongoose = require("mongoose");
 // Router
@@ -22,7 +23,7 @@ mongoose.connect(
   "mongodb://localhost:27017/groupwork_db",
   { useNewUrlParser: true}
 );
-
+//mongoose.set("useCreateIndex", true);
 const db = mongoose.connection;
 
 db.once("open", () => {
@@ -34,7 +35,7 @@ app.set("port", process.env.PORT || 3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+// Using logger to see the requests from client to server
 app.use(logger('dev'));
 app.use(express.json());
 app.use(layouts);
@@ -47,6 +48,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes for different views using routers
 app.use('/', router);
+
+app.get("/users", userController.getAllUsers);
+app.get("/register", userController.getSignInPage);
+app.post("/registering", userController.saveUser);
 
 // Using the errorController
 app.use(errorController.errorLogger);
