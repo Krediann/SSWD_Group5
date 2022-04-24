@@ -8,9 +8,10 @@ const layouts = require("express-ejs-layouts");
 const errorController = require("./controllers/errorController");
 const homeController = require("./controllers/homeController");
 const userController = require("./controllers/userController");
+const topicController = require("./controllers/topicController");
 // importing mongoose for DB
 const mongoose = require("mongoose");
-// Router
+// Router for index
 const router = require('./routes/index');
 
 const app = express();
@@ -48,11 +49,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes for different views using routers
 app.use('/', router);
-
-app.get("/users", userController.getAllUsers);
+// Routes for seeing all users, register page and the post for actually registering
+app.get("/users", userController.getAllUsers, userController.usersView);
 app.get("/register", userController.getSignInPage);
-app.post("/registering", userController.saveUser);
+app.get("/thanks", userController.thanks)
+app.post("/registering", userController.saveUser, userController.redirectView);
 
+// Route for the topics
+app.get("/newtopics", topicController.newtopicView);
+app.get("/topics", topicController.getAllTopics, topicController.topics);
+app.post("/savingTopics", topicController.saveTopic, topicController.redirectView);
 // Using the errorController
 app.use(errorController.errorLogger);
 app.use(errorController.respondNoResourceFound);

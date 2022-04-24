@@ -1,9 +1,12 @@
+<!-- The form for registering a new user-->
+
 <form action="/registering" method="post">
-    <label for = "userName">Username</label>
-    <input type = "text" name = "userName" placeholder = "Username">
+    <h2>Create a new user:</h2>
+    <label for = "inputUserName">Username</label>
+    <input type = "text" name = "userName" id = "inputUserName" placeholder = "Username" autofocus>
     <label for = "email">Email</label>
-    <input type = "email" name = "email" placeholder = "email">
+    <input type = "inputEmail" name = "email" id = "inputEmail" placeholder = "email">
     <label for = "password">Password</label>
-    <input type = "password" name = "password" placeholder = "password">
+    <input type = "inputPassword" name = "password" id = "inputPassword" placeholder = "password">
     <input type = "submit" name = "submit">
 </form>
