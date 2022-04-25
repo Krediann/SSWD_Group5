@@ -15,7 +15,7 @@ exports.respondNoResourceFound = (error, req, res, next) => {
     next();
 };
 // Errorhandler for the case 500 where the page is found but isn't working for some reason
-exports.responInternalError = (error, req, res, next) => {
+exports.respondInternalError = (error, req, res, next) => {
     let errorCode = StatusCodes.INTERNAL_SERVER_ERROR;
     console.log(`ERROR occured: ${error.stack}`);
     res.status(errorCode);

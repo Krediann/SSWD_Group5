@@ -52,5 +52,33 @@ module.exports = {
     // Rendering the page after registering
     thanks: (req, res) => {
         res.render("thanks");
-    }
+    }/*,
+    login: (req, res) => {
+        res.render("users/login");
+    },
+    authenticate: (req, res, next) => {
+        User.findOne({ email: req.body.email })
+            .then(user => {
+                if (user) {
+                    user.passwordComparison(req.body.password).then(passwordsMatch => {
+                        if (passwordsMatch) {
+                            res.locals.redirect ="/topics/topics";
+                            req.flash("success", `${user.userName} logged in succesfully`);
+                            res.locals.user = user;
+                        } else {
+                            req.flash("error", "Failed to log in due to wrong password");
+                            res.locals.redirect = "/users/login";
+                        }
+                        next();
+                    });
+                } else {
+                    req.flash("error", "No account found");
+                    res.locals.redirect = "/users/login";
+                    next();
+                }
+            })
+        .catch(error => {
+            console.log(`Error logging in: ${error.message}`);
+        });
+    }*/
 };
