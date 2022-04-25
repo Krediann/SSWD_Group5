@@ -4,6 +4,19 @@ body {
   background-color: aliceblue;
 }
 
+#footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 40px;
+  width: 100%;
+  background-color: darkgray;
+  text-align: center;
+  padding: 3px;
+  color: black;
+
+}
+
 a {
   color: #00B7FF;
 }
