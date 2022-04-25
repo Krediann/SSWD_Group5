@@ -7,11 +7,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const layouts = require("express-ejs-layouts");
 const session = require('express-session');
-// Importing controllers
-const errorController = require("./controllers/errorController");
-const homeController = require("./controllers/homeController");
-const userController = require("./controllers/userController");
-const topicController = require("./controllers/topicController");
 // importing mongoose for DB
 const mongoose = require("mongoose");
 
@@ -44,9 +39,8 @@ app.use(express.urlencoded({
   })
 );
 app.use(cookieParser());
-app.use(express.static(__dirname + "/public"));
 
-//app.use(session());
+app.use(express.static(__dirname + "/public"));
 
 app.use("/", router);
 app.listen(app.get("port"), () => {
