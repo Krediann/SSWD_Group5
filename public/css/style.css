@@ -16,6 +16,17 @@ body {
   color: black;
 
 }
+#header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  text-align: center;
+  padding: 3px;
+  background-color: darkgray;
+  color: black;
+  height: 50px;
+  width: 100%;
+}
 
 a {
   color: #00B7FF;
