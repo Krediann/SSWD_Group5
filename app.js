@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const layouts = require("express-ejs-layouts");
+const session = require('express-session');
 // Importing controllers
 const errorController = require("./controllers/errorController");
 const homeController = require("./controllers/homeController");
@@ -47,6 +48,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session());
 // Routes for different views using routers
 app.use('/', router);
 // Routes for seeing all users, register page and the post for actually registering
