@@ -1,3 +1,15 @@
-<% topics.forEach(t => {%>
-    <p><%= t.topicName%></p>
+<h2>Topics: <% topics.forEach(t => {%></h2>
+
+    <table class = "table">
+        <tr>
+            <th>
+                Topic:
+            </th>
+            <td>
+                <a href="<%= `/topics${t._id}` %>">
+                <%= t.topicName%>
+            </a>
+            </td>
+        </tr>
+    </table>
 <% })%>

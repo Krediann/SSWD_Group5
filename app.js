@@ -59,6 +59,7 @@ app.post("/registering", userController.saveUser, userController.redirectView);
 app.get("/newtopics", topicController.newtopicView);
 app.get("/topics", topicController.getAllTopics, topicController.topics);
 app.post("/savingTopics", topicController.saveTopic, topicController.redirectView);
+app.get("/topics:id", topicController.show, topicController.showView);
 // Using the errorController
 app.use(errorController.errorLogger);
 app.use(errorController.respondNoResourceFound);

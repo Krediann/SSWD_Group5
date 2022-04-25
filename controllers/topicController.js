@@ -23,18 +23,18 @@ module.exports = {
     let newTopic = {
         topicName: req.body.topicName
     };
-    // Actually creating the new user
+    // Actually creating the new topic
     Topic.create(newTopic)
-        // Redirecting after user creation to thanking of registering
+        // Redirecting after topic creation to thanking of registering
         .then(topic => {
             console.log(newTopic);
-            res.locals.redirect = "/topics";
+            res.locals.redirect = "/newtopics";
             res.locals.topic = topic;
             next();
         })
         // Error catcher
         .catch(error => {
-            console.log(`Error saving user: ${error.message}`);
+            console.log(`Error saving topic: ${error.message}`);
             next(error);
         });
     },
@@ -47,5 +47,20 @@ module.exports = {
 
     topics: (req, res) => {
         res.render("topics/topics");
+    },
+    show: (req, res, next) => {
+        let topicId = req.params.id;
+        Topic.findById(topicId)
+            .then(topic => {
+                res.locals.topic = topic;
+                next();
+            })
+            .catch(error => {
+                console.log(`There was an error fetching the topic ID: ${error.message}`);
+                next(error);
+            });
+    },
+    showView: (req, res) => {
+        res.render("topics/show");
     }
 };
