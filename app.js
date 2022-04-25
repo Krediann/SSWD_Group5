@@ -42,6 +42,8 @@ app.use(cookieParser());
 
 app.use(express.static(__dirname + "/public"));
 
+
+
 app.use("/", router);
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);
