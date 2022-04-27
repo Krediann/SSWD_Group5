@@ -40,9 +40,7 @@ app.use(express.urlencoded({
 );
 app.use(cookieParser());
 
-app.use(express.static(__dirname + "/public"));
-
-
+app.use(express.static(__dirname +"/public"));
 
 app.use("/", router);
 app.listen(app.get("port"), () => {
