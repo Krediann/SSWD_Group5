@@ -11,7 +11,14 @@ const topicSchema= new mongoose.Schema({
 });
 // Making a function to return topics information
 topicSchema.methods.getInfo = function () {
-    return `Topic's name: ${this.topicName}`;
-}
+    return `Topic's name: ${this.topicName} `;
+};
+
+/*topicSchema.methods.findTopics = function() {
+    return this.model("topics")
+        .find({ topicName: this.topicName})
+        .exec();
+}; */
+
 // Exporting the model
 module.exports = mongoose.model("topic", topicSchema);

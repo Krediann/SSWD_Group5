@@ -1,5 +1,5 @@
 const Topic = require("../models/newtopics");
-
+const JournalEntry = require("../models/journalEntry");
 module.exports = {
     // Getting the topics using find()
     getAllTopics: (req, res, next) => {
@@ -12,6 +12,18 @@ module.exports = {
             console.log(error.message);
             next(error);
         })
+    },
+    getAllEntries: (req, res, next) => {
+        JournalEntry.find({})
+            .then(entry => {
+                res.locals.entry = entry;
+                next();
+
+            })
+            .catch(error => {
+                console.log(error.message);
+                next(error);
+            });
     },
     // Displaying the new topic page
     newtopicView: (req, res) => {
@@ -27,7 +39,6 @@ module.exports = {
     Topic.create(newTopic)
         // Redirecting after topic creation to thanking of registering
         .then(topic => {
-            console.log(newTopic);
             res.locals.redirect = "/newtopics";
             res.locals.topic = topic;
             next();
@@ -38,6 +49,32 @@ module.exports = {
             next(error);
         });
     },
+
+    journalEntry: (req, res) => {
+        res.render("topics/newjournal");
+    },
+
+    savejournalEntry: (req, res, next) => {
+        let newJournalEntry = {
+            heading: req.body.heading,
+            content: req.body.content,
+            topic: req.body.topic
+        };
+        // Actually creating the new topic
+        JournalEntry.create(newJournalEntry)
+            // Redirecting after topic creation to thanking of registering
+            .then(journalEntry => {
+                res.locals.redirect = "/newjournal";
+                res.locals.journalEntry = journalEntry;
+                next();
+            })
+            // Error catcher
+            .catch(error => {
+                console.log(`Error saving journal entry: ${error.message}`);
+                next(error);
+            });
+        },
+
     // Redirecting the view after posting the topic data
     redirectView:(req, res, next) => {
         let redirectPath = res.locals.redirect;
@@ -58,8 +95,8 @@ module.exports = {
             .catch(error => {
                 console.log(`There was an error fetching the topic ID: ${error.message}`);
                 next(error);
-            });
-    },
+            })
+        },
     showView: (req, res) => {
         res.render("topics/show");
     }

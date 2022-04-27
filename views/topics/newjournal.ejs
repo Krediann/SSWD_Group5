@@ -1,0 +1,15 @@
+<div class="container">
+    <div class = "col-sm-6"><a href="/topics">Topics</a></div>
+    <div class="col-sm-6">
+      <h1>You can add journal entries below!</h1>
+    </div>
+    <form action = "savejournalentry" method = "post">
+        <label for = "inputHeading">New entry</label>
+        <input type = "text" name = "heading" id = "inputHeading" placeholder = "Heading" autofocus>
+        <label for = "inputTopic">Topic</label>
+        <input type = "text" name = "topic" id = "inputTopic" placeholder = "Topic">
+        <label for = "inputContent">content</label>
+        <textarea name = "content" id = "inputContent" placeholder = "content"></textarea>
+        <button type = "submit" name = "submit">Save</button>
+    </form>
+  </div>

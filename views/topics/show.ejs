@@ -1,1 +1,15 @@
+
 <h3>Journal entries for topic: <%= topic.topicName %></h3>
+
+
+<table class = "table">
+    <% entry.forEach(e => {%>
+        <tr>
+            <% console.log(e.topic) %>
+            <% if (e.topic === topic.topicName){ %>
+                <p><%= e.heading%></p>
+                <p><%= e.content%></p>
+            <% } %>
+        </tr>
+    <% })%>
+</table>

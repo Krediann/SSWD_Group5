@@ -1,12 +1,29 @@
 <!-- The form for registering a new user-->
-
-<form action="/registering" method="post">
-    <h2>Create a new user:</h2>
-    <label for = "inputUserName">Username</label>
-    <input type = "text" name = "userName" id = "inputUserName" placeholder = "Username" autofocus>
-    <label for = "email">Email</label>
-    <input type = "inputEmail" name = "email" id = "inputEmail" placeholder = "email">
-    <label for = "password">Password</label>
-    <input type = "inputPassword" name = "password" id = "inputPassword" placeholder = "password">
-    <button type = "submit" name = "submit">Sign in</button>
+<div class="col-sm-6">
+    <div class = "col-sm nav-align">
+        <div class="dropdown">
+            <button class ="dropbtn">Dropdown</button>
+            <div class = "dropdown-content">
+                <a href = "/" >
+                    Home page
+                </a>
+                <a href = "/register">
+                    Register page
+                </a>
+                <a href = "/users">
+                    All users
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="/registering" method="post" autocomplete="off">
+    <h2>Create a new user:</h2><br>
+    <label for = "inputUserName">Username:</label>
+    <input type = "text" name = "userName" id = "inputUserName" placeholder = "Username" autofocus><br>
+    <label for = "email">Email:</label>
+    <input type = "email" name = "inputEmail" id = "inputEmail" placeholder = "email"><br>
+    <label for = "password">Password:</label>
+    <input type = "password" name = "inputPassword" id = "inputPassword" placeholder = "password"><br>
+    <button type = "submit" name = "submit" id="registeringButton">Create account</button>
 </form>
