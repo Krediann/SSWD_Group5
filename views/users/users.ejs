@@ -1,23 +1,7 @@
 <!-- Show all users -->
 <div class="col-sm-6">
-    <div class = "col-sm nav-align">
-        <div class="dropdown">
-            <button class ="dropbtn">Dropdown</button>
-            <div class = "dropdown-content">
-                <a href = "/" >
-                    Home page
-                </a>
-                <a href = "/register">
-                    Register page
-                </a>
-                <a href = "/users">
-                    All users
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <% users.forEach(u => {%>
     <p><%= u.userName%></p>
     <p><%= u.email%></p>
 <% })%>
+</div>

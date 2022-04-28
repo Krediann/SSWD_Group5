@@ -1,5 +1,6 @@
 // Importing mongoose
 const mongoose = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose");
 //  Creating the schema for user
 const userSchema= new mongoose.Schema({
     // Adding datatypes for username, email and password
@@ -21,9 +22,10 @@ const userSchema= new mongoose.Schema({
         required: true
     }
 });
-// Making a function to return users information
-userSchema.methods.getInfo = function () {
-    return `Username: ${this.userName} Email: ${this.email}`;
-}
+
+userSchema.plugin(passportLocalMongoose, {
+    usernameField: "userName"
+});
+
 // Exporting the model
 module.exports = mongoose.model("User", userSchema);

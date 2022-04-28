@@ -1,29 +1,13 @@
 <!-- The form for registering a new user-->
 <div class="col-sm-6">
-    <div class = "col-sm nav-align">
-        <div class="dropdown">
-            <button class ="dropbtn">Dropdown</button>
-            <div class = "dropdown-content">
-                <a href = "/" >
-                    Home page
-                </a>
-                <a href = "/register">
-                    Register page
-                </a>
-                <a href = "/users">
-                    All users
-                </a>
-            </div>
-        </div>
-    </div>
-<form action="/registering" method="post" autocomplete="off">
-    <h2>Create a new user:</h2><br>
-    <label for = "inputUserName">Username:</label>
-    <input type = "text" name = "userName" id = "inputUserName" placeholder = "Username" autofocus><br>
-    <label for = "email">Email:</label>
-    <input type = "email" name = "email" id = "inputEmail" placeholder = "email"><br>
-    <label for = "password">Password:</label>
-    <input type = "password" name = "password" id = "inputPassword" placeholder = "password"><br>
-    <button type = "submit" name = "submit" id="registeringButton">Create account</button>
-</form>
+    <form action="/registering" method="post" autocomplete="off">
+        <h2>Create a new user:</h2><br>
+        <label for = "inputUserName"><b>Username:</b></label><br>
+        <input type = "text" name = "userName" id = "inputUserName" placeholder = "Username" autofocus required><br>
+        <label for = "email"><b>Email:</b></label><br>
+        <input type = "email" name = "email" id = "inputEmail" placeholder = "email" required><br>
+        <label for = "password"><b>Password:</b></label><br>
+        <input type = "password" name = "password" id = "inputPassword" placeholder = "password" required><br>
+        <button type = "submit" name = "submit" id="registeringButton">Create account</button>
+    </form>
 </div>

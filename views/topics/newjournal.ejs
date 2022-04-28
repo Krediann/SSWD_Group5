@@ -1,22 +1,17 @@
-<div class="col-sm-6">
-  <div class = "col-sm nav-align">
-      <div class="dropdown">
-          <button class ="dropbtn">Dropdown</button>
-          <div class = "dropdown-content">
-              <a href = "/topics" >
-                  Topics
-              </a>
-          </div>
-      </div>
-  </div>
-      <h1>You can add journal entries below!</h1>
+<div class = "col-sm-6">
+    <h1>You can add journal entries below!</h1>
       <form class= "journalEntry" action = "savejournalentry" method = "post">
-        <label for = "inputHeading">New entry</label>
-        <input type = "text" name = "heading" id = "inputHeading" placeholder = "Heading" autofocus class = form-control>
-        <label for = "inputTopic">Topic</label>
-        <input type = "text" name = "topic" id = "inputTopic" placeholder = "Topic" class = form-control>
-        <label for = "inputContent">content</label>
-        <textarea name = "content" id = "inputContent" placeholder = "content" class = form-control></textarea>
-        <button type = "submit" name = "submit">Save</button>
+        <label for="inputHeading"><b>Heading</b></label><br>
+        <input type="text" name="heading" id="inputHeading" class="form-control" placeholder="Heading" autofocus required autocomplete="off"><br>
+        <label for="inputTopic"><b>Topic</b></label><br>
+        <select  name="topic" id="inputTopic" required autocomplete="off">
+          <% topics.forEach(t => {%>
+            <option value="<%= t.topicName%>"><%= t.topicName%></option>
+          <% })%>
+        </select><br><br>
+        <label for="inputContent"><b>Content</b></label><br>
+        <textarea name="content" id="inputContent" class="form-control" placeholder="content" required autocomplete="off"></textarea><br>
+        <button type="submit">Save</button>
     </form>
+  </div>
 </div>

@@ -9,5 +9,7 @@ router.get("/register", userController.getSignInPage);
 router.get("/thanks", userController.thanks)
 router.post("/registering", userController.saveUser, userController.redirectView);
 router.get("/login", userController.login);
+router.post("/login", userController.authenticate, userController.redirectView);
+router.get("/logout", userController.logout, userController.redirectView);
 // Exporting the module
 module.exports = router;

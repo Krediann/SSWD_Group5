@@ -1,15 +1,18 @@
-const createError = require('http-errors');
-const express = require('express');
-const app = express();
-const path = require('path');
-const router = require('./routes/index');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const layouts = require("express-ejs-layouts");
-const session = require('express-session');
-const methodOverride = require("method-override");
-// importing mongoose for DB
-const mongoose = require("mongoose");
+const createError = require('http-errors'),
+  express = require('express'),
+  app = express(),
+  path = require('path'),
+  router = require('./routes/index'),
+  cookieParser = require('cookie-parser'),
+  logger = require('morgan'),
+  layouts = require("express-ejs-layouts"),
+  session = require('express-session'),
+  methodOverride = require("method-override"),
+  expressValidator= require('express-validator'),
+  connectFlash = require("connect-flash"),
+  passport = require("passport"),
+  User = require("./models/user"),
+  mongoose = require("mongoose");
 
 //Setting mongoose connection
 mongoose.Promise = global.Promise;
@@ -39,14 +42,35 @@ app.use(methodOverride("_method", {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(layouts);
+app.use(express.static(__dirname +"/public"));
+app.use(expressValidator());
 app.use(express.urlencoded({
    extended: false 
   })
 );
-app.use(cookieParser());
-
-app.use(express.static(__dirname +"/public"));
-
+app.use(cookieParser("secretLearningLogasd"));
+app.use(
+  session({
+    secret: "secretLearningLogasd",
+    cookie: {
+      maxAge: 5000000
+    },
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(connectFlash());
+app.use((req, res, next) => {
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  res.locals.flashMessages = req.flash();
+  next();
+});
 app.use("/", router);
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost:${app.get("port")}`);

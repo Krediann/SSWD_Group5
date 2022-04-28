@@ -1,27 +1,27 @@
-<div class="col-sm-6">
-    <div class = "col-sm nav-align">
-        <div class="dropdown">
-            <button class ="dropbtn">Dropdown</button>
-            <div class = "dropdown-content">
-                <a href = "/newtopics" >
-                    New topics
-                </a>
-            </div>
-        </div>
-    </div>
+<div class = "col-sm-6">
     <h2>Topics:</h2>
-        <% topics.forEach(t => {%>
-        <table class = "table">
-            <tr>
-                <th>
-                    Topic:
-                </th>
-                <td>
-                    <a href="<%= `/topics/${t._id}` %>">
-                    <%= t.topicName%>
-                    </a>
-                </td>
-            </tr>
+    <a type = "button" href = "/newtopics" class ="button" id = "linkbutton">Entry a new topic here!</a>
+    <a type = "button" href = "/newjournal" class ="button" id = "linkbutton">Entry a new journal entry here!</a>
+    <div style="overflow-x:auto;">
+        <table class = "center">
+            <thead>
+                <tr>
+                    <th>
+                        Topic:
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% topics.forEach(t => {%>
+                <tr>
+                    <td>
+                        <a href="<%= `/topics/${t._id}` %>">
+                        <%= t.topicName%>
+                        </a>
+                    </td>
+                </tr>
+                <% })%>
+            </tbody>
         </table>
-    <% })%>
+    </div>
 </div>

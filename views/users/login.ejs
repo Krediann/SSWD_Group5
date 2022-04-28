@@ -1,12 +1,10 @@
-<form action="/users/login" method="POST">
-    <h2>Login:</h2>
-    <label for="inputUserName">Email address</label>
-    <input type="text" name="userName" id="inputUserName"
-   placeholder="Username" required>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword"
-   placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-  
-  
+<div class="col-sm-6">
+    <form action="/login" method="POST" autocomplete="off">
+      <h2>Login:</h2><br>
+      <label for="inputUserName">Username</label><br>
+      <input type="text" name="userName" id="inputUserName" placeholder="Username" required autocomplete="off"><br>
+      <label for="inputPassword">Password</label><br>
+      <input type="password" name="password" id="inputPassword" placeholder="Password" required autocomplete="off"><br>
+      <button type="submit">Login</button>
+    </form>
+</div>
