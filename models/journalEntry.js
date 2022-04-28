@@ -16,21 +16,8 @@ const mongoose = require("mongoose"),
         topic: {
             type: String,
             required: true
-        },
-        topicname: {
-            type: String,
-            ref: "topic"
         }
     });
-
-// Making a function to return topics information
-journalEntrySchema.methods.getInfo = function () {
-    return `Entry's heading: ${this.heading}`;
-};
-
-journalEntrySchema.methods.getInfo = function () {
-    return `Journal entry's heading:': ${this.heading} content: ${this.content}`;
-};
 
 // Exporting the model
 module.exports = mongoose.model("journalEntry", journalEntrySchema);

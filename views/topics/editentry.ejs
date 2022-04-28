@@ -1,0 +1,12 @@
+<div class="data-form">
+    <form class="journalEntry" method="POST" action="<%= `/topics/${topic._id}/${entry._id}/update?_method=PUT`%>">
+      <h2>Edit user:</h2>
+      <label for="inputHeading">Heading</label>
+      <input type="text" name="heading" id="inputHeading" class="form-control" value="<%= entry.heading %>" placeholder="Heading" autofocus>
+      <label for="inputTopic">Content</label>
+      <input type="text" name="topic" id="inputTopic" class="form-control" value="<%= entry.topic %>" placeholder="topic">
+      <label for="inputContent">Content</label>
+      <input type="text" name="content" id="inputContent" class="form-control" value="<%= entry.content %>" placeholder="content">
+      <button type="submit">Save</button>
+    </form>
+  </div>

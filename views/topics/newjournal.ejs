@@ -1,15 +1,22 @@
-<div class="container">
-    <div class = "col-sm-6"><a href="/topics">Topics</a></div>
-    <div class="col-sm-6">
+<div class="col-sm-6">
+  <div class = "col-sm nav-align">
+      <div class="dropdown">
+          <button class ="dropbtn">Dropdown</button>
+          <div class = "dropdown-content">
+              <a href = "/topics" >
+                  Topics
+              </a>
+          </div>
+      </div>
+  </div>
       <h1>You can add journal entries below!</h1>
-    </div>
-    <form action = "savejournalentry" method = "post">
+      <form class= "journalEntry" action = "savejournalentry" method = "post">
         <label for = "inputHeading">New entry</label>
-        <input type = "text" name = "heading" id = "inputHeading" placeholder = "Heading" autofocus>
+        <input type = "text" name = "heading" id = "inputHeading" placeholder = "Heading" autofocus class = form-control>
         <label for = "inputTopic">Topic</label>
-        <input type = "text" name = "topic" id = "inputTopic" placeholder = "Topic">
+        <input type = "text" name = "topic" id = "inputTopic" placeholder = "Topic" class = form-control>
         <label for = "inputContent">content</label>
-        <textarea name = "content" id = "inputContent" placeholder = "content"></textarea>
+        <textarea name = "content" id = "inputContent" placeholder = "content" class = form-control></textarea>
         <button type = "submit" name = "submit">Save</button>
     </form>
-  </div>
+</div>

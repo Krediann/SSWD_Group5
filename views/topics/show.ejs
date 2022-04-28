@@ -1,15 +1,33 @@
 
-<h3>Journal entries for topic: <%= topic.topicName %></h3>
-
-
-<table class = "table">
-    <% entry.forEach(e => {%>
-        <tr>
-            <% console.log(e.topic) %>
-            <% if (e.topic === topic.topicName){ %>
-                <p><%= e.heading%></p>
-                <p><%= e.content%></p>
-            <% } %>
-        </tr>
-    <% })%>
-</table>
+<div class="col-sm-6">
+    <div class = "col-sm nav-align">
+        <div class="dropdown">
+            <button class ="dropbtn">Dropdown</button>
+            <div class = "dropdown-content">
+                <a href = "/topics" >
+                    Topics
+                </a>
+                <a href = "/newjournal">
+                    Add journal entries
+                </a>
+            </div>
+        </div>
+    </div>
+    <h3>Journal entries for topic: <%= topic.topicName %></h3>
+    <table class = "table">
+        <% entry.forEach(e => {%>
+            <tr>
+                <% if (e.topic === topic.topicName){ %>
+                    <td><p><%= e.heading%></p></td>
+                    <td> <p><%= e.content%></p></td>
+                    <td><a class = "button" href = "<%= `/topics/${topic._id}/${e._id}` %>">
+                        Edit entry
+                    </a></td>
+                    <td>
+                        <a class = "button" href = "<%= `/topics/${topic._id}/${e._id}/delete?_method=DELETE` %>" onclick ="return confirm('Are you sure you want to delete this journal entry?')" a>Delete</a>
+                        </td>
+                <% } %>
+            </tr>
+        <% })%>
+    </table>
+</div>

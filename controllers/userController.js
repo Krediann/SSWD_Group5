@@ -52,7 +52,7 @@ module.exports = {
     // Rendering the page after registering
     thanks: (req, res) => {
         res.render("thanks");
-    }/*,
+    },
     login: (req, res) => {
         res.render("users/login");
     },
@@ -80,5 +80,5 @@ module.exports = {
         .catch(error => {
             console.log(`Error logging in: ${error.message}`);
         });
-    }*/
+    }
 };

@@ -1,5 +1,13 @@
 const Topic = require("../models/newtopics");
 const JournalEntry = require("../models/journalEntry");
+const getEntryParameters = body => {
+    return {
+        heading: body.heading,
+        content: body.content,
+        topic: body.topic
+    };
+};
+
 module.exports = {
     // Getting the topics using find()
     getAllTopics: (req, res, next) => {
@@ -55,11 +63,7 @@ module.exports = {
     },
 
     savejournalEntry: (req, res, next) => {
-        let newJournalEntry = {
-            heading: req.body.heading,
-            content: req.body.content,
-            topic: req.body.topic
-        };
+        let newJournalEntry = new JournalEntry(getEntryParameters(req.body));
         // Actually creating the new topic
         JournalEntry.create(newJournalEntry)
             // Redirecting after topic creation to thanking of registering
@@ -73,6 +77,60 @@ module.exports = {
                 console.log(`Error saving journal entry: ${error.message}`);
                 next(error);
             });
+        },
+
+        editEntry: (req, res, next) => {
+            let entryId = req.params.ID;
+            let topicId = req.params.id;
+            Topic.findById(topicId)
+            .then(topic => {
+                res.locals.topic = topic;
+                next();
+            })
+            .catch (error => {
+                console.log(error.message + "LOL");
+                next(error);
+            })
+            JournalEntry.findById(entryId)
+              .then(entry => {
+                res.render("topics/editentry", {
+                    entry: entry
+                });
+              })
+              .catch(error => {
+                console.log(`Error fetching journal entry by ID: ${error.message}`);
+                next(error);
+              });
+          },
+        
+        updateEntry: (req, res, next) => {
+            let entryId = req.params.ID;
+            entryParameters = getEntryParameters(req.body);
+            JournalEntry.findByIdAndUpdate(entryId, {
+                $set: entryParameters
+            })
+            .then(entry => {
+                res.locals.entry = entry;
+                res.locals.redirect = "/topics";
+                next();
+            })
+            .catch(error => {
+                console.log("There was an error updating journal entry" + error.message);
+                next(error);
+            });
+        },
+
+        deleteEntry: (req, res, next) => {
+            let entryId = req.params.ID;
+            JournalEntry.findByIdAndRemove(entryId)
+            .then(() => {
+                res.locals.redirect = "/topics";
+                next();
+            })
+            .catch (error => {
+                console.log("Error deleting entry" + error.message);
+                next();
+            })
         },
 
     // Redirecting the view after posting the topic data

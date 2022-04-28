@@ -1,11 +1,18 @@
-<div class="container">
-    <div class = "col-sm-6"><a href="/topics">Topics</a></div>
-    <div class="col-sm-6">
+<div class="col-sm-6">
+  <div class = "col-sm nav-align">
+      <div class="dropdown">
+          <button class ="dropbtn">Dropdown</button>
+          <div class = "dropdown-content">
+              <a href = "/topics" >
+                  Topics
+              </a>
+          </div>
+      </div>
+  </div>
       <h1>You can add more topics below!</h1>
-    </div>
-    <form action = "savingTopics" method = "post">
+      <form action = "savingTopics" method = "post">
         <label for = "inputTopic">New topic</label>
         <input type = "text" name = "topicName" id = "inputTopic" placeholder = "Topic name" autofocus>
-        <input type = "submit" name = "submit">
+        <button type = "submit" name = "submit">Save</button>
     </form>
-  </div>
+</div>

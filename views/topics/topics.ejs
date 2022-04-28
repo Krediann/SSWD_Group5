@@ -1,15 +1,27 @@
-<h2>Topics: <% topics.forEach(t => {%></h2>
-
-    <table class = "table">
-        <tr>
-            <th>
-                Topic:
-            </th>
-            <td>
-                <a href="<%= `/topics/${t._id}` %>">
-                <%= t.topicName%>
-            </a>
-            </td>
-        </tr>
-    </table>
-<% })%>
+<div class="col-sm-6">
+    <div class = "col-sm nav-align">
+        <div class="dropdown">
+            <button class ="dropbtn">Dropdown</button>
+            <div class = "dropdown-content">
+                <a href = "/newtopics" >
+                    New topics
+                </a>
+            </div>
+        </div>
+    </div>
+    <h2>Topics:</h2>
+        <% topics.forEach(t => {%>
+        <table class = "table">
+            <tr>
+                <th>
+                    Topic:
+                </th>
+                <td>
+                    <a href="<%= `/topics/${t._id}` %>">
+                    <%= t.topicName%>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    <% })%>
+</div>

@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const layouts = require("express-ejs-layouts");
 const session = require('express-session');
+const methodOverride = require("method-override");
 // importing mongoose for DB
 const mongoose = require("mongoose");
 
@@ -29,6 +30,10 @@ app.set("port", process.env.PORT || 3000);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(methodOverride("_method", {
+  methods: ["POST", "GET"]
+}));
 
 // Using logger to see the requests from client to server
 app.use(logger('dev'));
