@@ -165,8 +165,8 @@ button[type="submit"] {
 .login {
   position: absolute;
   right: 0.5vw;
-  top: 1.5vw;
-  padding: 1vw;
+  top: 15px;
+  padding: 10px;
   background: aliceblue;
   border-radius: 1vw;
 }
@@ -186,6 +186,11 @@ button[type="submit"] {
   .login {
     overflow: hidden;
     white-space: nowrap;
-    font-size: 2vw;
+    padding: 1px;
+    position:static;
+    text-align: center;
+  }
+  .log-out {
+    background-color: lightgray;
   }
 }
