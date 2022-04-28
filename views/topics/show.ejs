@@ -1,3 +1,4 @@
+<% if (currentUser){ %>
 <div class = "col-sm-6">
     <h3>Journal entries for topic: <%= topic.topicName %></h3>
     <div style="overflow-x:auto;">
@@ -31,3 +32,4 @@
         </table>
     </div>
 </div>
+<% } %>

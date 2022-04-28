@@ -46,7 +46,7 @@ table, td, th {
 }
 table{
   border-collapse: collapse;
-  width: 50%;
+  width: 100%;
 }
 th {
   background-color: darkgray;
@@ -139,6 +139,7 @@ textarea {
   background-color: lightgray;
   font-size: 12px;
 }
+
 select {
   width: 50%;
   height: 30px;

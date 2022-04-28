@@ -1,3 +1,4 @@
+<% if (currentUser){ %>
 <div class = "col-sm-6">
 <div class="data-form">
     <form class="journalEntry" method="POST" action="<%= `/topics/${topic._id}/${entry._id}/update?_method=PUT`%>">
@@ -16,3 +17,4 @@
     </form>
   </div>
 </div>
+<% } %>

@@ -1,7 +1,9 @@
 <!-- Show all users -->
+<% if (currentUser){ %>
 <div class="col-sm-6">
 <% users.forEach(u => {%>
     <p><%= u.userName%></p>
     <p><%= u.email%></p>
 <% })%>
 </div>
+<% } %>
